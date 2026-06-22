@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parkgate Construction — Refurbishment & Renovation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────────────── */
+    :root {
+      --green:       #2E7D32;
+      --green-light: #43A047;
+      --green-dim:   #1B5E20;
+      --off-white:   #F7F6F3;
+      --stone:       #E8E5DF;
+      --ink:         #1A1A18;
+      --mid:         #5A5A56;
+      --rule:        rgba(0,0,0,0.10);
+
+      --display:     'DM Serif Display', Georgia, serif;
+      --body:        'DM Sans', system-ui, sans-serif;
+
+      --max:         1120px;
+      --gap:         clamp(2rem, 5vw, 4rem);
+    }
+
+    /* ── RESET ───────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--body);
+      font-size: clamp(15px, 1.1vw, 17px);
+      color: var(--ink);
+      background: var(--off-white);
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ─────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(247, 246, 243, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-logo {
+      font-family: var(--body);
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+    .nav-logo span { color: var(--ink); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-cta {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--green);
+      color: #fff;
+      padding: 0.55rem 1.2rem;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--green-dim); }
+
+    /* ── HERO ────────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 4.5rem;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(3rem, 8vw, 7rem) clamp(2rem, 5vw, 5rem);
+      padding-right: clamp(2rem, 4vw, 4rem);
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1.4rem;
+    }
+    .hero-headline {
+      font-family: var(--display);
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      line-height: 1.08;
+      color: var(--ink);
+      margin-bottom: 1.8rem;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--green);
+    }
+    .hero-sub {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--mid);
+      max-width: 38ch;
+      margin-bottom: 2.8rem;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+      font-family: var(--body);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--green-dim); }
+    .btn-ghost {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--mid);
+      border-bottom: 1px solid var(--mid);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--green); border-color: var(--green); }
+
+    .hero-right {
+      position: relative;
+      background: var(--ink);
+      overflow: hidden;
+    }
+    /* Architectural grid overlay — the brand's signature motif */
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(46,125,50,0.18) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(46,125,50,0.18) 1px, transparent 1px);
+      background-size: 60px 60px;
+      z-index: 1;
+    }
+    .hero-right::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26,26,24,0.6) 0%, transparent 60%);
+      z-index: 2;
+    }
+    .hero-right-content {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2.5rem;
+    }
+    .hero-stat-block {
+      display: flex;
+      gap: 2rem;
+    }
+    .hero-stat {
+      border-top: 2px solid var(--green);
+      padding-top: 0.8rem;
+    }
+    .hero-stat-num {
+      font-family: var(--display);
+      font-size: 2.4rem;
+      color: #fff;
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.3rem;
+    }
+    /* Big background text */
+    .hero-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--display);
+      font-size: clamp(6rem, 14vw, 14rem);
+      color: rgba(255,255,255,0.04);
+      white-space: nowrap;
+      user-select: none;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ── MARQUEE STRIP ───────────────────────────────────────────── */
+    .marquee-wrap {
+      background: var(--green);
+      overflow: hidden;
+      padding: 0.8rem 0;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 3rem;
+      white-space: nowrap;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee-item {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      flex-shrink: 0;
+    }
+    .marquee-dot {
+      color: rgba(255,255,255,0.4);
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+    }
+
+    /* ── SHARED ──────────────────────────────────────────────────── */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .section {
+      padding: clamp(4rem, 9vw, 7rem) 0;
+    }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    /* ── SERVICES ────────────────────────────────────────────────── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-top: 3.5rem;
+    }
+    .service-card {
+      background: var(--off-white);
+      padding: 2.4rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.25s;
+    }
+    .service-card:hover { background: #fff; }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--green);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon {
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+    }
+    .service-name {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      color: var(--ink);
+      margin-bottom: 0.7rem;
+    }
+    .service-desc {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--mid);
+    }
+
+    /* ── CLIENT FOCUS ────────────────────────────────────────────── */
+    .client-section {
+      background: var(--ink);
+      color: #fff;
+    }
+    .client-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .client-label { color: var(--green-light); }
+    .client-title {
+      font-family: var(--display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.15;
+      color: #fff;
+      margin: 1rem 0 1.5rem;
+    }
+    .client-body {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 2rem;
+    }
+    .client-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .client-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.75);
+    }
+    .client-features li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--green-light);
+      margin-top: 0.45em;
+      flex-shrink: 0;
+    }
+    .client-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .client-stat-box {
+      padding: 2rem 1.5rem;
+      background: rgba(255,255,255,0.03);
+    }
+    .client-stat-num {
+      font-family: var(--display);
+      font-size: 2.6rem;
+      color: var(--green-light);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .client-stat-desc {
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── PROCESS ─────────────────────────────────────────────────── */
+    .process-section { background: var(--stone); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 3.5rem;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 2.2rem;
+      left: calc(12.5%);
+      right: calc(12.5%);
+      height: 1px;
+      background: var(--green);
+      opacity: 0.35;
+    }
+    .process-step {
+      padding: 0 1.5rem 0 0;
+      position: relative;
+    }
+    .step-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--off-white);
+      border: 2px solid var(--green);
+      margin-bottom: 1.8rem;
+    }
+    .step-num {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.5rem;
+    }
+    .step-title {
+      font-family: var(--display);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .step-desc {
+      font-size: 0.85rem;
+      line-height: 1.65;
+      color: var(--mid);
+    }
+
+    /* ── CONTACT ─────────────────────────────────────────────────── */
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-title {
+      font-family: var(--display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.15;
+      color: var(--ink);
+      margin: 1rem 0 1.2rem;
+    }
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+    .contact-detail-item {
+      font-size: 0.88rem;
+      color: var(--mid);
+    }
+    .contact-detail-item strong {
+      color: var(--ink);
+      font-weight: 500;
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.1rem;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+    input, select, textarea {
+      font-family: var(--body);
+      font-size: 0.9rem;
+      color: var(--ink);
+      background: transparent;
+      border: none;
+      border-bottom: 1.5px solid var(--stone);
+      padding: 0.6rem 0;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-bottom-color: var(--green);
+    }
+    textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      margin-top: 0.5rem;
+    }
+    .btn-submit {
+      background: var(--green);
+      color: #fff;
+      font-family: var(--body);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.95rem 2.4rem;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: var(--green-dim); }
+
+    /* ── FOOTER ──────────────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.45);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-brand {
+      font-family: var(--body);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+    .footer-brand span { color: var(--green-light); }
+    .footer-copy { font-size: 0.72rem; }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { min-height: 240px; }
+      .nav-links { display: none; }
+      .client-inner,
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .client-right { grid-template-columns: 1fr 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .process-steps::before { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo"><span>Parkgate</span> Construction</div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#clients">Our Work</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Refurbishment &amp; Renovation Specialists</p>
+      <h1 class="hero-headline">
+        Built to last.<br><em>Finished to impress.</em>
+      </h1>
+      <p class="hero-sub">
+        Parkgate Construction delivers high-quality renovation and refurbishment across London — from complete commercial fit-outs to detailed residential projects. Trusted by health and leisure clients who can't afford disruption.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary">Request a Quote</a>
+        <a href="#services" class="btn-ghost">See what we do</a>
+      </div>
+    </div>
+    <div class="hero-right" aria-hidden="true">
+      <div class="hero-bg-text">Build</div>
+      <div class="hero-right-content">
+        <div class="hero-stat-block">
+          <div class="hero-stat">
+            <div class="hero-stat-num">15+</div>
+            <div class="hero-stat-label">Years experience</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">200+</div>
+            <div class="hero-stat-label">Projects completed</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">0</div>
+            <div class="hero-stat-label">Missed deadlines</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <!-- Duplicated for seamless loop -->
+      <span class="marquee-item">Structural Refurbishment</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Commercial Fit-Out</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Health &amp; Leisure Venues</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Plumbing &amp; M&amp;E</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Project Management</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Fully Insured &amp; Accredited</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Structural Refurbishment</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Commercial Fit-Out</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Health &amp; Leisure Venues</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Plumbing &amp; M&amp;E</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Project Management</span><span class="marquee-dot">·</span>
+      <span class="marquee-item">Fully Insured &amp; Accredited</span><span class="marquee-dot">·</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="section" id="services">
+    <div class="container">
+      <p class="section-label">What we do</p>
+      <h2 class="section-title">Renovation done properly,<br>from strip-out to sign-off</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🏗️</div>
+          <h3 class="service-name">Full Refurbishment</h3>
+          <p class="service-desc">Complete strip-out and rebuild of commercial and residential spaces. We manage every trade from groundworks to finishes, so you deal with one point of contact.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🏊</div>
+          <h3 class="service-name">Health &amp; Leisure Fit-Out</h3>
+          <p class="service-desc">Specialist experience in gyms, pools, spas, and club environments. We work around operating hours to keep your members happy and your doors open.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🔧</div>
+          <h3 class="service-name">M&amp;E &amp; Plumbing</h3>
+          <p class="service-desc">Mechanical, electrical, and plumbing installation and upgrades. Coordinated in-house to keep programmes tight and avoid the usual subcontractor delays.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📐</div>
+          <h3 class="service-name">Extensions &amp; Alterations</h3>
+          <p class="service-desc">Structural alterations, rear and side extensions, and internal reconfigurations. We work closely with your architect or can recommend trusted partners.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🪟</div>
+          <h3 class="service-name">Interiors &amp; Fit-Out</h3>
+          <p class="service-desc">Partitioning, drylining, joinery, tiling, and decorating. The finishing trades that separate a good job from one clients talk about.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📋</div>
+          <h3 class="service-name">Project Management</h3>
+          <p class="service-desc">Programme planning, site management, and coordination across all trades. We keep projects on time and on budget — and communicate when anything changes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT FOCUS -->
+  <section class="section client-section" id="clients">
+    <div class="container">
+      <div class="client-inner">
+        <div>
+          <p class="section-label client-label">Why clients choose us</p>
+          <h2 class="client-title">The contractor your health club can rely on</h2>
+          <p class="client-body">
+            We're the preferred contractor for a number of health and leisure operators across London. They come back to us because we understand the pressures of running a live venue — noise restrictions, member experience, plant room access — and we build our programmes around yours.
+          </p>
+          <ul class="client-features">
+            <li>Out-of-hours and phased working available</li>
+            <li>Experience with pool halls, gym floors, treatment rooms, and changing facilities</li>
+            <li>Dedicated site manager on every project</li>
+            <li>Full public liability and employer's liability insurance</li>
+            <li>Clean, professional teams — right for client-facing environments</li>
+          </ul>
+        </div>
+        <div class="client-right">
+          <div class="client-stat-box">
+            <div class="client-stat-num">8</div>
+            <div class="client-stat-desc">Health &amp; leisure venues refurbished in the last 3 years</div>
+          </div>
+          <div class="client-stat-box">
+            <div class="client-stat-num">100%</div>
+            <div class="client-stat-desc">Of repeat clients would recommend Parkgate</div>
+          </div>
+          <div class="client-stat-box">
+            <div class="client-stat-num">48hr</div>
+            <div class="client-stat-desc">Average response time for new enquiries</div>
+          </div>
+          <div class="client-stat-box">
+            <div class="client-stat-num">£0</div>
+            <div class="client-stat-desc">Hidden costs — our quotes cover the full scope</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section process-section" id="process">
+    <div class="container">
+      <p class="section-label">How it works</p>
+      <h2 class="section-title">From first call to final sign-off</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-dot"></div>
+          <p class="step-num">Step 01</p>
+          <h3 class="step-title">Initial Consultation</h3>
+          <p class="step-desc">We visit the site, understand your brief, and ask the questions that avoid surprises later.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-dot"></div>
+          <p class="step-num">Step 02</p>
+          <h3 class="step-title">Detailed Quote</h3>
+          <p class="step-desc">A clear, itemised quote covering labour, materials, and any contingency. No vague estimates.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-dot"></div>
+          <p class="step-num">Step 03</p>
+          <h3 class="step-title">Programme &amp; Start</h3>
+          <p class="step-desc">We agree a programme that works around your schedule and mobilise on time.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-dot"></div>
+          <p class="step-num">Step 04</p>
+          <h3 class="step-title">Handover</h3>
+          <p class="step-desc">A thorough snagging process, clean site, and full documentation. We're done when you're happy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div>
+          <p class="section-label">Get in touch</p>
+          <h2 class="contact-title">Tell us about your project</h2>
+          <p style="font-size:0.9rem;line-height:1.7;color:var(--mid);margin-bottom:0.5rem">
+            Whether you have full drawings or just an idea, we're happy to talk it through. Most enquiries get a response within 48 hours.
+          </p>
+          <div class="contact-detail">
+            <div class="contact-detail-item">
+              <strong>Phone</strong>
+              +44 7838 111016
+            </div>
+            <div class="contact-detail-item">
+              <strong>Email</strong>
+              jonathanradford@parkgate-construction.com
+            </div>
+            <div class="contact-detail-item">
+              <strong>Based in</strong>
+              London &amp; surrounding areas
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your name</label>
+              <input type="text" id="name" name="name" placeholder="Jane Smith" required />
+            </div>
+            <div class="form-group">
+              <label for="company">Company (optional)</label>
+              <input type="text" id="company" name="company" placeholder="Acme Health Club" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="+44 7838 111016" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="type">Type of project</label>
+            <select id="type" name="type">
+              <option value="">Select one…</option>
+              <option>Health &amp; leisure refurbishment</option>
+              <option>Commercial fit-out</option>
+              <option>Residential extension or renovation</option>
+              <option>M&amp;E / plumbing works</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell us about the project</label>
+            <textarea id="message" name="message" placeholder="Location, scope, rough timescales…" required></textarea>
+          </div>
+          <div class="form-submit">
+            <button type="submit" class="btn-submit">Send Enquiry</button>
+          </div>
+          <p id="form-confirm" style="display:none;font-size:0.85rem;color:var(--green);margin-top:0.5rem">
+            ✓ Thanks — we'll be in touch within 48 hours.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand"><span>Parkgate</span> Construction Ltd</div>
+    <div class="footer-copy">© 2025 Parkgate Construction Limited · 184 Mitcham Road, London SW17 9NJ</div>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('form-confirm').style.display = 'block';
+      e.target.reset();
+    }
+  </script>
+
+</body>
+</html>
