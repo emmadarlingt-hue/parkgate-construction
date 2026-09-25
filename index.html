@@ -197,7 +197,7 @@
     }
     .hero-stat-num {
       font-family: var(--display);
-      font-size: 2.4rem;
+      font-size: 1.45rem;
       color: #fff;
       line-height: 1;
     }
@@ -305,9 +305,23 @@
     }
     .service-card:hover::before { transform: scaleX(1); }
     .service-icon {
-      font-size: 1.6rem;
+      width: 2rem;
+      height: 2rem;
+      color: var(--green);
       margin-bottom: 1.2rem;
     }
+    .service-icon svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .contact-detail-item a { color: inherit; text-decoration: underline; text-decoration-color: var(--green); text-underline-offset: 3px; }
+    .contact-detail-item a:hover { color: var(--green); }
+    .form-hidden { position: absolute; left: -9999px; }
     .service-name {
       font-family: var(--display);
       font-size: 1.25rem;
@@ -378,7 +392,7 @@
     }
     .client-stat-num {
       font-family: var(--display);
-      font-size: 2.6rem;
+      font-size: 1.5rem;
       color: var(--green-light);
       line-height: 1;
       margin-bottom: 0.4rem;
@@ -555,6 +569,7 @@
     @media (max-width: 768px) {
       .hero { grid-template-columns: 1fr; min-height: auto; }
       .hero-right { min-height: 240px; }
+      .hero-stat-block { gap: 1.25rem; }
       .nav-links { display: none; }
       .client-inner,
       .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -599,16 +614,16 @@
       <div class="hero-right-content">
         <div class="hero-stat-block">
           <div class="hero-stat">
-            <div class="hero-stat-num">15+</div>
-            <div class="hero-stat-label">Years experience</div>
+            <div class="hero-stat-num">Out of hours</div>
+            <div class="hero-stat-label">Phased working available</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-num">200+</div>
-            <div class="hero-stat-label">Projects completed</div>
+            <div class="hero-stat-num">One contact</div>
+            <div class="hero-stat-label">Every trade managed</div>
           </div>
           <div class="hero-stat">
-            <div class="hero-stat-num">0</div>
-            <div class="hero-stat-label">Missed deadlines</div>
+            <div class="hero-stat-num">Fully insured</div>
+            <div class="hero-stat-label">Public &amp; employer's liability</div>
           </div>
         </div>
       </div>
@@ -641,32 +656,32 @@
       <h2 class="section-title">Renovation done properly,<br>from strip-out to sign-off</h2>
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon">🏗️</div>
+          <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9.5 21v-6h5v6"/></svg></div>
           <h3 class="service-name">Full Refurbishment</h3>
           <p class="service-desc">Complete strip-out and rebuild of commercial and residential spaces. We manage every trade from groundworks to finishes, so you deal with one point of contact.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🏊</div>
+          <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 3v10M16 3v10M8 6.5h8M8 10h8"/><path d="M2 16c1.7 0 1.7-1.2 3.3-1.2S7 16 8.7 16s1.6-1.2 3.3-1.2 1.6 1.2 3.3 1.2 1.7-1.2 3.3-1.2S20.3 16 22 16"/><path d="M2 20c1.7 0 1.7-1.2 3.3-1.2S7 20 8.7 20s1.6-1.2 3.3-1.2 1.6 1.2 3.3 1.2 1.7-1.2 3.3-1.2S20.3 20 22 20"/></svg></div>
           <h3 class="service-name">Health &amp; Leisure Fit-Out</h3>
           <p class="service-desc">Specialist experience in gyms, pools, spas, and club environments. We work around operating hours to keep your members happy and your doors open.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🔧</div>
+          <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 5h9a6 6 0 0 1 6 6v10"/><path d="M3 9h9a2 2 0 0 1 2 2v10"/><path d="M3 3.5v7"/><path d="M12.5 21h7"/></svg></div>
           <h3 class="service-name">M&amp;E &amp; Plumbing</h3>
           <p class="service-desc">Mechanical, electrical, and plumbing installation and upgrades. Coordinated in-house to keep programmes tight and avoid the usual subcontractor delays.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">📐</div>
+          <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 3v18h17z"/><path d="M8 11.5V17h5.5z"/><path d="M4 7h2M4 11h2M4 15h2"/></svg></div>
           <h3 class="service-name">Extensions &amp; Alterations</h3>
           <p class="service-desc">Structural alterations, rear and side extensions, and internal reconfigurations. We work closely with your architect or can recommend trusted partners.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">🪟</div>
+          <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="15" height="6" rx="1"/><path d="M18 6h3v5h-9v3"/><rect x="10.5" y="14" width="3" height="7" rx="1"/></svg></div>
           <h3 class="service-name">Interiors &amp; Fit-Out</h3>
           <p class="service-desc">Partitioning, drylining, joinery, tiling, and decorating. The finishing trades that separate a good job from one clients talk about.</p>
         </div>
         <div class="service-card">
-          <div class="service-icon">📋</div>
+          <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 2.5h6v3H9z"/><path d="m9 13 2 2 4-4"/></svg></div>
           <h3 class="service-name">Project Management</h3>
           <p class="service-desc">Programme planning, site management, and coordination across all trades. We keep projects on time and on budget — and communicate when anything changes.</p>
         </div>
@@ -694,20 +709,20 @@
         </div>
         <div class="client-right">
           <div class="client-stat-box">
-            <div class="client-stat-num">8</div>
-            <div class="client-stat-desc">Health &amp; leisure venues refurbished in the last 3 years</div>
+            <div class="client-stat-num">Live venues</div>
+            <div class="client-stat-desc">Built around your members, noise limits and plant-room access</div>
           </div>
           <div class="client-stat-box">
-            <div class="client-stat-num">100%</div>
-            <div class="client-stat-desc">Of repeat clients would recommend Parkgate</div>
+            <div class="client-stat-num">Site manager</div>
+            <div class="client-stat-desc">One dedicated manager on every project</div>
           </div>
           <div class="client-stat-box">
-            <div class="client-stat-num">48hr</div>
-            <div class="client-stat-desc">Average response time for new enquiries</div>
+            <div class="client-stat-num">Itemised quotes</div>
+            <div class="client-stat-desc">Labour, materials and contingency, spelled out</div>
           </div>
           <div class="client-stat-box">
-            <div class="client-stat-num">£0</div>
-            <div class="client-stat-desc">Hidden costs — our quotes cover the full scope</div>
+            <div class="client-stat-num">Clean sites</div>
+            <div class="client-stat-desc">Professional teams, right for client-facing spaces</div>
           </div>
         </div>
       </div>
@@ -756,17 +771,12 @@
           <p class="section-label">Get in touch</p>
           <h2 class="contact-title">Tell us about your project</h2>
           <p style="font-size:0.9rem;line-height:1.7;color:var(--mid);margin-bottom:0.5rem">
-            Whether you have full drawings or just an idea, we're happy to talk it through. Most enquiries get a response within 48 hours.
+            Whether you have full drawings or just an idea, we're happy to talk it through.
           </p>
           <div class="contact-detail">
             <div class="contact-detail-item">
-              <strong>Phone</strong>
-              +44 7838 111016
-            </div>
-            <div class="contact-detail-item">
               <strong>Email</strong>
-              hello@parkgate-construction.com
-      
+              <a href="mailto:hello@parkgate-construction.com">hello@parkgate-construction.com</a>
             </div>
             <div class="contact-detail-item">
               <strong>Based in</strong>
@@ -774,7 +784,9 @@
             </div>
           </div>
         </div>
-        <form class="contact-form" onsubmit="handleSubmit(event)">
+        <form class="contact-form" name="enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+          <input type="hidden" name="form-name" value="enquiry" />
+          <p class="form-hidden" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
           <div class="form-row">
             <div class="form-group">
               <label for="name">Your name</label>
@@ -792,7 +804,7 @@
             </div>
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" placeholder="+44 7838 111016" />
+              <input type="tel" id="phone" name="phone" placeholder="07700 900123" />
             </div>
           </div>
           <div class="form-group">
@@ -814,7 +826,10 @@
             <button type="submit" class="btn-submit">Send Enquiry</button>
           </div>
           <p id="form-confirm" style="display:none;font-size:0.85rem;color:var(--green);margin-top:0.5rem">
-            ✓ Thanks — we'll be in touch within 48 hours.
+            ✓ Thanks — we'll be in touch soon.
+          </p>
+          <p id="form-error" role="alert" style="display:none;font-size:0.85rem;color:#B3261E;margin-top:0.5rem">
+            Sorry, that didn't send. Please email hello@parkgate-construction.com instead.
           </p>
         </form>
       </div>
@@ -824,14 +839,28 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-brand"><span>Parkgate</span> Construction Ltd</div>
-    <div class="footer-copy">© 2025 Parkgate Construction Limited · 184 Mitcham Road, London SW17 9NJ</div>
+    <div class="footer-copy">© 2026 Parkgate Construction Limited · 184 Mitcham Road, London SW17 9NJ</div>
   </footer>
 
   <script>
     function handleSubmit(e) {
       e.preventDefault();
-      document.getElementById('form-confirm').style.display = 'block';
-      e.target.reset();
+      const form = e.target;
+      const confirm = document.getElementById('form-confirm');
+      const error = document.getElementById('form-error');
+      confirm.style.display = 'none';
+      error.style.display = 'none';
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+        .then(res => {
+          if (!res.ok) throw new Error(res.status);
+          confirm.style.display = 'block';
+          form.reset();
+        })
+        .catch(() => { error.style.display = 'block'; });
     }
   </script>
 
