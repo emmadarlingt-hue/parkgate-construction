@@ -82,6 +82,7 @@
       color: #fff;
       padding: 0.55rem 1.2rem;
       border-radius: 2px;
+      white-space: nowrap;
       transition: background 0.2s;
     }
     .nav-cta:hover { background: var(--green-dim); }
@@ -275,6 +276,8 @@
       line-height: 1.15;
       color: var(--ink);
     }
+    /* Keeps hyphenated words whole; a U+2011 non-breaking hyphen may be missing from DM Serif Display */
+    .nowrap { white-space: nowrap; }
 
     /* ── SERVICES ────────────────────────────────────────────────── */
     .services-grid {
@@ -578,6 +581,10 @@
       .process-steps::before { display: none; }
       .form-row { grid-template-columns: 1fr; }
     }
+    @media (max-width: 480px) {
+      nav { padding: 1rem 1.25rem; gap: 1rem; }
+      .nav-cta { padding: 0.5rem 0.9rem; letter-spacing: 0.06em; }
+    }
   </style>
 </head>
 <body>
@@ -602,7 +609,7 @@
         Built to last.<br><em>Finished to impress.</em>
       </h1>
       <p class="hero-sub">
-        Parkgate Construction delivers high-quality renovation and refurbishment across London — from complete commercial fit-outs to detailed residential projects. Trusted by health and leisure clients who can't afford disruption.
+        Parkgate Construction delivers high-quality renovation and refurbishment across London — from complete commercial fit-outs to detailed residential projects. Trusted by a London health club that can't afford disruption.
       </p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">Request a Quote</a>
@@ -647,7 +654,7 @@
   <section class="section" id="services">
     <div class="container">
       <p class="section-label">What we do</p>
-      <h2 class="section-title">Renovation done properly,<br>from strip-out to sign-off</h2>
+      <h2 class="section-title">Renovation done properly,<br>from strip-out to <span class="nowrap">sign-off</span></h2>
       <div class="services-grid">
         <div class="service-card">
           <div class="service-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9.5 21v-6h5v6"/></svg></div>
@@ -726,7 +733,7 @@
   <section class="section process-section" id="process">
     <div class="container">
       <p class="section-label">How it works</p>
-      <h2 class="section-title">From first call to final sign-off</h2>
+      <h2 class="section-title">From first call to final <span class="nowrap">sign-off</span></h2>
       <div class="process-steps">
         <div class="process-step">
           <div class="step-dot"></div>
