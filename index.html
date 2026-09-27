@@ -18,6 +18,7 @@
       --ink:         #1A1A18;
       --mid:         #5A5A56;
       --rule:        rgba(0,0,0,0.10);
+      --on-ink-muted: rgba(255,255,255,0.55); /* secondary text on --ink: 6.0:1, clears AA at small sizes */
 
       --display:     'DM Serif Display', Georgia, serif;
       --body:        'DM Sans', system-ui, sans-serif;
@@ -206,7 +207,7 @@
       font-size: 0.72rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
+      color: var(--on-ink-muted);
       margin-top: 0.3rem;
     }
     /* Big background text */
@@ -243,6 +244,10 @@
       color: rgba(255,255,255,0.85);
       flex-shrink: 0;
     }
+    /* Low contrast (2.1:1) is deliberate. The dots are pure decoration: they carry
+       no information, and the whole strip is aria-hidden. Because they're text
+       glyphs, the rule that applies is 1.4.3, whose "incidental" exception covers
+       pure decoration; 1.4.11 wouldn't require contrast either. */
     .marquee-dot {
       color: rgba(255,255,255,0.4);
     }
@@ -403,7 +408,7 @@
     .client-stat-desc {
       font-size: 0.8rem;
       line-height: 1.5;
-      color: rgba(255,255,255,0.55);
+      color: var(--on-ink-muted);
     }
 
     /* ── PROCESS ─────────────────────────────────────────────────── */
@@ -548,7 +553,7 @@
     /* ── FOOTER ──────────────────────────────────────────────────── */
     footer {
       background: var(--ink);
-      color: rgba(255,255,255,0.45);
+      color: var(--on-ink-muted);
       padding: 2rem;
       display: flex;
       align-items: center;
