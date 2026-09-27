@@ -227,7 +227,7 @@
 
     /* ── MARQUEE STRIP ───────────────────────────────────────────── */
     .marquee-wrap {
-      background: var(--green);
+      background: var(--green-dim); /* 85% white text on it measures 6.2:1; --green gave 4.19:1 */
       overflow: hidden;
       padding: 0.8rem 0;
     }
@@ -244,7 +244,7 @@
       color: rgba(255,255,255,0.85);
       flex-shrink: 0;
     }
-    /* Low contrast (2.1:1) is deliberate. The dots are pure decoration: they carry
+    /* Low contrast (2.6:1) is deliberate. The dots are pure decoration: they carry
        no information, and the whole strip is aria-hidden. Because they're text
        glyphs, the rule that applies is 1.4.3, whose "incidental" exception covers
        pure decoration; 1.4.11 wouldn't require contrast either. */
